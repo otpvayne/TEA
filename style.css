@@ -1,17 +1,72 @@
-.btn-1{
-    display: inline-block;
-    background-color: blueviolet;
-    padding: 15px 35px ;
-    color: white;
-    text-decoration: none;
-}
-
-.btn-2{
-    background-color: aqua;
-    padding: 15px 35px;
-    border: 0;
-}
-.contenedor{
-    margin-top: 1700px;
+/* From Uiverse.io by JulanDeAlb */ 
+.btn {
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    background: #040f16;
+    color: #f5f5f5;
+    position: relative; /* Ensure that the dropdown is positioned correctly */
+  }
+  
+  .btn:hover {
+    box-shadow: 0 0 20px 0px #2e2e2e3a;
+  }
+  
+  .btn .icon {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+  
+  .btn .text {
+    transform: translateX(55px);
+  }
+  
+  .btn:hover .icon {
+    width: 175px;
+  }
+  
+  .btn:hover .text {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  
+  .btn .dropdown {
     display: none;
-}
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 150px; /* Same width as the button */
+    background: #040f16;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+  }
+  
+  .btn:hover .dropdown {
+    display: flex;
+  }
+  
+  .btn .dropdown a {
+    color: #f5f5f5;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    display: block;
+  }
+  
+  .btn .dropdown a:hover {
+    background: #2e2e2e;
+  }
+  
