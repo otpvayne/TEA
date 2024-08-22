@@ -1,3 +1,4 @@
+
 .btn {
     width: 150px;
     height: 50px;
@@ -16,6 +17,7 @@
   
   .btn:hover {
     box-shadow: 0 0 20px 0px #2e2e2e3a;
+    transition: all 0.5s;
   }
   
   .btn .icon {
@@ -29,11 +31,11 @@
   }
   
   .btn .text {
-    transform: translateX(55px);
+    transform: translateX(45px);
   }
   
   .btn:hover .icon {
-    width: 175px;
+    width: 160px;
   }
   
   .btn:hover .text {
@@ -51,6 +53,7 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     flex-direction: column;
+    
   }
   
   .btn:hover .dropdown {
@@ -66,6 +69,8 @@
   }
   
   .btn .dropdown a:hover {
-    background: #2e2e2e;
+    transition: all 0.1s;
+    background: #c21e83;
+    transform: translateX(4px);
   }
   
