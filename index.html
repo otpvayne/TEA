@@ -21,16 +21,58 @@
         </span>
         <span class="text">MENU</span>
         <div class="dropdown">
-            <a href="#" id="loginLink" >LOGIN</a>
-            <a href="#" id="logoutLink">LOG OUT</a>  <!--CONTENIDO DEL DESPLEGABLE CON SU RESPECTIVO ID-->
+            <a href="#" id="loginLink" >INICIO DE SESION</a>
+            <a href="#" id="registroLink">Registrate</a>  <!--CONTENIDO DEL DESPLEGABLE CON SU RESPECTIVO ID-->
             <a href="#" id="supportLink">SUPPORT</a>
             <a href="#" id="juegosLink">JUEGOS</a>
         </div>
     </button>
-  
+  <div class="Registro" id="regisroForm">
+    <form action="">
+        <h1>REGISTRO DE NUEVO JUGADOR</h1>
+        <i class='bx bx-user-plus'></i>
+        <h2>Nombre</h2>
+            <div class="input-box">
+                <input type="text" placeholder="Nombre"required>
+            </div>
+        
+       
+        <h2>Apellido</h2>
+            <div class="input-box"> 
+                <input type="text" placeholder="Apellido"required>
+            </div>
+            
+            <h2>Usuario</h2>
+            <div class="input-box">
+                <input type="text" placeholder="Usuario"required>
+            </div>
+        <h2>Contraseña</h2>
+            <div class="input-box"> 
+                <input type="password" placeholder="Contraseña"required>
+            </div>
+        <h2>Edad</h2>
+            <div class="input-box">
+                <input type="number" placeholder="Edad"required>
+            </div>
+        <h2>Genero</h2>
+            <label>
+                <input type="radio" name="opcion" value="HOMBRE">
+                HOMBRE
+            </label>
+            <label>
+                <input type="radio" name="opcion" value="MUJER">
+                MUJER
+            </label>
+        <h2>Correo</h2>
+            <div class="input-box">
+                <input type="email" placeholder="Email"required>
+            </div>
+        <button type="submit" class="btn3">Entrar</button>
+        </form>
+    </div>
     <div class="login" id="loginForm">  <!--INCIALIZACION DE INICIO DE SESION-->
         <form action="">
-            <h1>Login</h1>
+            <h1>INICIO DE SESION</h1>
             <div class="input-box">
                 <i class='bx bxs-user'></i>
                 <input type="text" placeholder="Username"required>
@@ -43,15 +85,15 @@
             <br>
 
             <div class="remember-forgot">
-                <label><input type="checkbox">Remember me</label>
+                <label><input type="checkbox">Recuerdame</label>
                 <br>
                 
-                <a href="#">Forgot password?</a>
+                <a href="#">Olvidaste tu contraseña?</a>
             </div>
             <br>
             <button type="submit" class="btnn">Entrar</button>
             <div class="register-link">
-                <p>No tienes cuenta?<a href="#">Registro</a></p>
+                <p>No tienes cuenta?<a href="#">Registrate</a></p>
             </div>
         </form>
 
