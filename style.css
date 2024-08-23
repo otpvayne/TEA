@@ -1,5 +1,5 @@
 
-.btn {
+.btn { /* BOTON DE MENU*/
     width: 150px;
     height: 50px;
     border-radius: 5px;
@@ -11,17 +11,17 @@
     display: flex;
     align-items: center;
     background: #add8e6;
-    color: #8a4a64;
+    color: #90668d;
     position: relative;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Ensure that the dropdown is positioned correctly */
   }
   
-  .btn:hover {
+  .btn:hover { /*SOMBRA DEL MENU*/
     box-shadow: 0 0 20px 0px #2e2e2e3a;
     transition: all 0.5s;
   }
   
-  .btn .icon {
+  .btn .icon { 
     position: absolute;
     height: 40px;
     width: 70px;
@@ -31,7 +31,7 @@
     transition: all 0.5s;
   }
   
-  .btn .text {
+  .btn .text { /*Transaladar rayas horizontales*/
     transform: translateX(45px);
   }
   
@@ -39,12 +39,12 @@
     width: 160px;
   }
   
-  .btn:hover .text {
+  .btn:hover .text { /*Animacion*/
     transition: all 0.5s;
     opacity: 0;
   }
   
-  .btn .dropdown {
+  .btn .dropdown { /*Desplegable*/
     display: none;
     position: absolute;
     top: 100%;
@@ -57,7 +57,7 @@
     
   }
   
-  .btn:hover .dropdown {
+  .btn:hover .dropdown { /*Sombra del desplegable*/
     display: flex;
   }
   
@@ -69,13 +69,17 @@
     display: block;
   }
   
-  .btn .dropdown a:hover {
+  .btn .dropdown a:hover { /*Animacion de los botones del desplegable*/
     transition: all 0.1s;
     background: #c21e83;
     transform: translateX(4px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
-  .login {
+  .login { /*INTERFAZ DE INICIAR SESION*/
+    flex-wrap: wrap;/* RESPONSIVE*/
+    min-width: 300px;
+    min-height: 300px;/* RESPONSIVE*/
+    margin-bottom: 0px;/* RESPONSIVE*/
     display: none; /* Oculto por defecto */
     position: fixed;
     top: 50%;
@@ -89,12 +93,13 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     font-size: 30px;
-    width: 20%;
+    
+    
 }
-.remember-forgot{
+.remember-forgot{ /*RECUERDA ME*/
   font-size: 15px;
 }
-.input-box {
+.input-box { /*USER Y PASSWORD*/
   position: relative;
   width: 100%;
 }
@@ -105,20 +110,19 @@
   font-size: 18px;
   box-sizing: border-box;
 }
-.register-link{
-  font-size: 18px;
-}
-.input-box input::placeholder {
+.input-box input::placeholder {/*Tamaño del placeholder*/
   font-size: 15px;
 }
-.btnn{
+.register-link{/*REGISTRO*/
+  font-size: 18px;
+}
+.btnn{/*BOTON DE ENTRAR EN INICIO DE SESION */
 
   align-items: center;
   cursor: pointer;
   background-image: linear-gradient(144deg,#99bdd9, #90a1c8 50%,#9084ae);
   border: 0;
   border-radius: 5px;
-
   box-sizing: border-box;
   color: #FFFFFF;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
