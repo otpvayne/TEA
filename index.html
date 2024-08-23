@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Botón Menu</title>
     <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
     <button class="btn">
@@ -18,12 +20,41 @@
         </span>
         <span class="text">MENU</span>
         <div class="dropdown">
-            <a href="#">LOGIN</a>
-            <a href="#">LOG OUT</a>
-            <a href="#">SUPPORT</a>
-            <a href="#">JUEGOS</a>
+            <a href="#" id="loginLink" >LOGIN</a>
+            <a href="#" id="logoutLink">LOG OUT</a>
+            <a href="#" id="supportLink">SUPPORT</a>
+            <a href="#" id="juegosLink">JUEGOS</a>
         </div>
     </button>
   
+    <div class="login" id="loginForm">
+        <form action="">
+            <h1>Login</h1>
+            <div class="input-box">
+                <i class='bx bxs-user'></i>
+                <input type="text" placeholder="Username"required>
+            </div>
+            <br>
+            <div class="input-box">
+                <i class='bx bxs-lock'></i>
+                <input type="password" placeholder="Password"required>
+            </div>
+            <br>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox">Remember me</label>
+                <br>
+                
+                <a href="#">Forgot password?</a>
+            </div>
+            <br>
+            <button type="submit" class="btnn">Entrar</button>
+            <div class="register-link">
+                <p>No tienes cuenta?<a href="#">Registro</a></p>
+            </div>
+        </form>
+
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
