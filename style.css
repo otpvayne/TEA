@@ -44,7 +44,7 @@
     opacity: 0;
   }
   
-  .btn .dropdown { /*Desplegable*/
+  .dropdown { /*Desplegable*/
     display: none;
     position: absolute;
     top: 100%;
@@ -56,9 +56,10 @@
     flex-direction: column;
     
   }
-  
-  .btn:hover .dropdown { /*Sombra del desplegable*/
-    display: flex;
+
+
+  .btn:hover .dropdown.show { /*Sombra del desplegable*/
+    display: block;
   }
   
   .btn .dropdown a {
@@ -74,6 +75,7 @@
     background: #c21e83;
     transform: translateX(4px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    
   }
   .login { /*INTERFAZ DE INICIAR SESION*/
     flex-wrap: wrap;/* RESPONSIVE*/
@@ -134,5 +136,7 @@
   padding: 4%;
   
   }
+
+
 
 
