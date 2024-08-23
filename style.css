@@ -105,7 +105,18 @@
   position: relative;
   width: 100%;
 }
+.Registro i {
+  font-size: 48px; /* Ajusta el tamaño del ícono según sea necesario */
+  color: #90668d; /* Cambia el color según tus preferencias */
+  margin-bottom: 20px; /* Espacio debajo del ícono */
+  align-items: center;
 
+    height: 40px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .input-box input {
   width: 80%;
   padding: 18px;
@@ -147,6 +158,11 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
   max-width: 400px; /* Ajusta según tus necesidades */
   margin: auto;
+  flex-wrap: wrap;/* RESPONSIVE*/
+    min-width: 250px;
+    margin-top: -40px;/* RESPONSIVE*/
+    margin-bottom: 0px;
+
 }
 
 .Registro h1 {
