@@ -60,3 +60,29 @@ process.on('SIGTERM', closeConnection);
 app.get('/', (req, res) => {
   res.send('El servidor esta funcionando perfectamente');
 });
+
+// Ruta para manejar la solicitud de registro
+app.post('/Registro', async (req, res) => {
+  const { Nombre, Apellido, Usuario, Contraseña, Fecha_registro, Edad, Genero, Email } = req.body;
+  const fecha_registro = new Date().toISOString().slice(0, 19).replace('T', ' '); // Formato: YYYY-MM-DD HH:MM:SS
+
+  console.log('Datos recibidos:', { Nombre, Apellido, Usuario, Contraseña, Fecha_registro, Edad, Genero, Email });
+
+  try {
+    const result = await client.execute(`
+      INSERT INTO Registro_usuario (Nombre, Apellido, Usuario, Contraseña, Fecha_registro, Edad, Genero, Email)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `, [Nombre, Apellido, Usuario, Contraseña, Fecha_registro, Edad, Genero, Email]);
+
+    console.log('Resultado de la inserción:', result);
+
+    if (result.rowsAffected > 0) {
+      res.json({ message: 'Registro exitoso' });
+    } else {
+      res.status(500).json({ message: 'Error al registrar el usuario' });
+    }
+  } catch (error) {
+    console.error('Error en la inserción:', error);
+    res.status(500).json({ message: 'Error en el servidor' });
+  }
+});
