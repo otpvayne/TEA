@@ -1,88 +1,46 @@
-import express from 'express';
-import { createClient } from '@libsql/client';
-
-// Configuración del cliente de base de datos
-const client = createClient({
-  url: 'libsql://monkey-otpvayne.turso.io',
-  authToken: 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3MjQ0MTg2MjUsImlkIjoiNWY4Y2IxMzQtNGFhNi00Njk4LWE3Y2MtNGFiZWIxMjY3NjkxIn0.UXrjLDAXZp9_uVzuitxfCOCka3vHz3tguOFGgS9lxZvIREMXuzlSOTAiFj_3GuezpFJiVwnTj9sy9kBbu8YiBg'
-});
-
-// Crear la aplicación Express
+const express = require('express');
+const mysql = require('mysql2');
+const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
 
-// Middleware para parsear el cuerpo de la solicitud en formato JSON
-app.use(express.json());
+// Configura el body-parser para obtener datos POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-// Ruta para manejar la solicitud de login
-app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
+// Configura la conexión a la base de datos MySQL
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'jive',
+    port: 3307
+});
 
-  // Verificar las credenciales en la base de datos
-  try {
-    // Realizar la consulta para verificar el usuario y la contraseña
-    const result = await client.execute(`
-      SELECT * FROM users WHERE username = ? AND password = ?;
-    `, [username, password]);
-
-    // Comprobar si se encontraron resultados
-    if (result.rows.length > 0) {
-      res.json({ message: 'Login exitoso' });
+// Verifica la conexión a la base de datos
+connection.connect(err => {
+    if (err) {
+        console.error('Error conectando a la base de datos: ', err);
     } else {
-      res.status(401).json({ message: 'Credenciales inválidas' });
+        console.log('Conectado a la base de datos');
     }
-  } catch (error) {
-    console.error('Error en la consulta:', error);
-    res.status(500).json({ message: 'Error en el servidor' });
-  }
 });
 
-// Iniciar el servidor
-app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:3000`);
+// Ruta para insertar datos en la base de datos
+app.post('/insertar', (req, res) => {
+    const { nombre, usuario, contraseña } = req.body;
+    
+    const query = `INSERT INTO prueba1 (nombre, usuario, contraseña) VALUES (?, ?, ?)`;
+
+    connection.query(query, [nombre, usuario, contraseña], (err, result) => {
+        if (err) {
+            console.error('Error al insertar datos: ', err);
+            res.status(500).send('Error al insertar datos');
+        } else {
+            res.send('Datos insertados correctamente');
+        }
+    });
 });
-
-// Manejar la conexión y el cierre
-async function closeConnection() {
-  try {
-    await client.close();
-    console.log('Conexión cerrada exitosamente');
-  } catch (error) {
-    console.error('Error cerrando la conexión:', error);
-  }
-}
-
-// Ejecutar el cierre de conexión cuando el proceso se termine
-process.on('SIGINT', closeConnection);
-process.on('SIGTERM', closeConnection);
-
-// Ruta para manejar solicitudes GET a la raíz
-app.get('/', (req, res) => {
-  res.send('El servidor esta funcionando perfectamente');
-});
-
-// Ruta para manejar la solicitud de registro
-app.post('/Registro', async (req, res) => {
-  const { Nombre, Apellido, Usuario, Contraseña, Fecha_registro, Edad, Genero, Email } = req.body;
-  const fecha_registro = new Date().toISOString().slice(0, 19).replace('T', ' '); // Formato: YYYY-MM-DD HH:MM:SS
-
-  console.log('Datos recibidos:', { Nombre, Apellido, Usuario, Contraseña, Fecha_registro, Edad, Genero, Email });
-
-  try {
-    const result = await client.execute(`
-      INSERT INTO Registro_usuario (Nombre, Apellido, Usuario, Contraseña, Fecha_registro, Edad, Genero, Email)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `, [Nombre, Apellido, Usuario, Contraseña, Fecha_registro, Edad, Genero, Email]);
-
-    console.log('Resultado de la inserción:', result);
-
-    if (result.rowsAffected > 0) {
-      res.json({ message: 'Registro exitoso' });
-    } else {
-      res.status(500).json({ message: 'Error al registrar el usuario' });
-    }
-  } catch (error) {
-    console.error('Error en la inserción:', error);
-    res.status(500).json({ message: 'Error en el servidor' });
-  }
+// Inicia el servidor en el puerto 3000
+app.listen(3000, () => {
+  console.log('Servidor corriendo en http://localhost:3000');
 });

@@ -79,13 +79,11 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
         const formData = new FormData(registroFormElement);
         const data = {
-            Nombre: formData.get('Nombre'),
-            Apellido: formData.get('Apellido'),
-            Usuario: formData.get('Usuario'),
+            Nombre_Tutor: formData.get('Nombre_Tutor'),
+            Nombre_Jugador: formData.get('Nombre_Jugador'),
             Contraseña: formData.get('Contraseña'),
-            Edad: formData.get('Edad'),
-            Genero: formData.get('Genero'),
-            Email: formData.get('Email')
+            Edad_Jugador: formData.get('Edad_Jugador'),
+            Correo: formData.get('Correo')
         };
 
         try {
